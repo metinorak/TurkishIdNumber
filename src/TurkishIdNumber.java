@@ -9,24 +9,7 @@ public class TurkishIdNumber {
     public String toString(){
         return this.value;
     }
-    
-    public static void main(String[] args) {
-        TurkishIdNumber tid = null;
-        try{
-            tid = new TurkishIdNumber("10000000146");
-        }
-        catch(IllegalArgumentException e){
-            e.printStackTrace();
-        }
-        
-        try{
-            tid.setValue("10000000140");
-        }
-        catch(IllegalArgumentException e){
-            e.printStackTrace();
-        }
-    }
-    
+  
     public void setValue(String value) throws IllegalArgumentException{
         if(!isValid(value)){
             throw new IllegalArgumentException("Invalid Turkish Id Number");
