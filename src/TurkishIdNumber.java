@@ -9,6 +9,7 @@ public class TurkishIdNumber {
     public String toString(){
         return this.value;
     }
+    
   
     public void setValue(String value) throws IllegalArgumentException{
         if(!isValid(value)){
@@ -27,28 +28,28 @@ public class TurkishIdNumber {
             return false;
         }
         
-        int first_sum = 0;
-        int second_sum = 0;
+        int firstSum = 0;
+        int secondSum = 0;
 
         for(int i = 0; i < 4; i++){
-            first_sum += getDigit(value, i * 2);
-            second_sum += getDigit(value, i * 2 + 1);
+            firstSum += getDigit(value, i * 2);
+            secondSum += getDigit(value, i * 2 + 1);
         }
-        first_sum += getDigit(value, 8);
+        firstSum += getDigit(value, 8);
         
-        int n = 7 * first_sum - second_sum;
+        int checkSum = (7 * firstSum - secondSum) % 10;
         
-        if(n < 0){
-            n += 10;
+        if(checkSum < 0){
+            checkSum += 10;
         }
 
-        if(n % 10 != getDigit(value, 9)){
+        if(checkSum != getDigit(value, 9)){
             return false;
         }
 
-        int first_ten_sum = first_sum + second_sum + getDigit(value, 9);
+        int firstTenSum = firstSum + secondSum + getDigit(value, 9);
 
-        return first_ten_sum % 10 == getDigit(value, 10);
+        return firstTenSum % 10 == getDigit(value, 10);
     }
     
     private static short getDigit(String value, int index){
@@ -66,5 +67,4 @@ public class TurkishIdNumber {
         }
         return true;
     }
-    
 }
