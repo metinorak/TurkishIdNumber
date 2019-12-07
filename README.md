@@ -7,39 +7,39 @@ Generating an object using this class, you can keep the Turkish id numbers as ob
 * Add TurkishIdNumber.java to your project.
 
 ## Examples
-```
-    public static void main(String[] args) {
-        TurkishIdNumber tid = null;
-        try{
-            tid = new TurkishIdNumber("10000000146");
-        }
-        catch(IllegalArgumentException e){
-            e.printStackTrace();
-        }
+```java
+public static void main(String[] args) {
+    TurkishIdNumber tid = null;
+    try{
+        tid = new TurkishIdNumber("10000000146");
     }
+    catch(IllegalArgumentException e){
+        e.printStackTrace();
+    }
+}
 
 ```
 
 * You can also change the value later:
 
 
-```
-    public static void main(String[] args) {
-        TurkishIdNumber tid = null;
-        try{
-            tid = new TurkishIdNumber("10000000146");
-        }
-        catch(IllegalArgumentException e){
-            e.printStackTrace();
-        }
-        
-        try{
-            tid.setValue("10000000140");
-        }
-        catch(IllegalArgumentException e){
-            e.printStackTrace();
-        }
+```java
+public static void main(String[] args) {
+    TurkishIdNumber tid = null;
+    try{
+        tid = new TurkishIdNumber("10000000146");
     }
+    catch(IllegalArgumentException e){
+        e.printStackTrace();
+    }
+
+    try{
+        tid.setValue("10000000140");
+    }
+    catch(IllegalArgumentException e){
+        e.printStackTrace();
+    }
+}
 ```
 
 * And get the value as a String using `toString method.`
@@ -47,9 +47,9 @@ Generating an object using this class, you can keep the Turkish id numbers as ob
 
 * You don't have to create an object. If you just want to validate the value, use static isValid method. 
 
-```
-    if(TurkishIdNumber.isValid("10000000146"){
-        System.out.println("The number is valid."));
-    }
+```java
+if(TurkishIdNumber.isValid("10000000146"){
+    System.out.println("The number is valid."));
+}
 ```
 
