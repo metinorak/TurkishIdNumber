@@ -9,9 +9,8 @@ Generating an object using this class, you can keep the Turkish id numbers as ob
 ## Examples
 ```java
 public static void main(String[] args) {
-    TurkishIdNumber tid = null;
     try{
-        tid = new TurkishIdNumber("10000000146");
+        TurkishIdNumber tid = new TurkishIdNumber("10000000146");
     }
     catch(IllegalArgumentException e){
         e.printStackTrace();
@@ -25,15 +24,8 @@ public static void main(String[] args) {
 
 ```java
 public static void main(String[] args) {
-    TurkishIdNumber tid = null;
     try{
-        tid = new TurkishIdNumber("10000000146");
-    }
-    catch(IllegalArgumentException e){
-        e.printStackTrace();
-    }
-
-    try{
+        TurkishIdNumber tid = new TurkishIdNumber("10000000146");
         tid.setValue("10000000140");
     }
     catch(IllegalArgumentException e){
@@ -48,8 +40,12 @@ public static void main(String[] args) {
 * You don't have to create an object. If you just want to validate the value, use static isValid method. 
 
 ```java
-if(TurkishIdNumber.isValid("10000000146"){
-    System.out.println("The number is valid."));
+if(TurkishIdNumber.isValid("10000000146")){
+    System.out.println("The number is valid.");
 }
 ```
 
+* You can also generate a random number using static 'generate' method.
+```java
+System.out.println(TurkishIdNumber.generate());
+```

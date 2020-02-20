@@ -1,3 +1,7 @@
+
+import java.util.Arrays;
+import java.util.Random;
+
 public class TurkishIdNumber {
     private final static int length = 11;
     private String value;
@@ -9,7 +13,6 @@ public class TurkishIdNumber {
     public String toString(){
         return this.value;
     }
-    
   
     public void setValue(String value) throws IllegalArgumentException{
         if(!isValid(value)){
@@ -51,6 +54,49 @@ public class TurkishIdNumber {
 
         return firstTenSum % 10 == getDigit(value, 10);
     }
+   
+    public static TurkishIdNumber generate(){
+        int[] array = new int[11];
+        Random random = new Random();
+        int firstSum = 0;
+        int secondSum = 0;
+        
+        for(int i=0; i<9; i++){
+            if(i == 0){
+                array[i] = random.nextInt(9) + 1; 
+            }
+            else{
+                array[i] = random.nextInt(10);
+            }
+            
+            if(i %2 == 0){
+                firstSum += array[i];
+            }
+            else{
+                secondSum += array[i];
+            }
+        }
+        
+        int checkSum = (7 * firstSum - secondSum) % 10;
+        
+        if(checkSum < 0){
+            checkSum += 10;
+        }
+        
+        array[9] = checkSum;
+        
+        int firstTenSum = firstSum + secondSum + array[9];
+        
+        array[10] = firstTenSum % 10;
+        
+        StringBuilder builder = new StringBuilder();
+        
+        for(Integer number : array){
+            builder.append(number);
+        }
+        
+        return new TurkishIdNumber(builder.toString());
+    }
     
     private static short getDigit(String value, int index){
         return Short.parseShort(new String(new char[]{value.charAt(index)}));
@@ -67,4 +113,5 @@ public class TurkishIdNumber {
         }
         return true;
     }
+    
 }
